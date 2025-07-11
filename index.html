@@ -2,36 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Criminal Codex Game</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="icon.png" type="image/png" />
   <style>
     body {
-      background-color: black;
       margin: 0;
-      padding: 0;
-      font-family: sans-serif;
+      overflow: hidden;
+      background-color: black;
       color: white;
+      font-family: sans-serif;
+    }
+
+    #game {
+      width: 100vw;
+      height: 100vh;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
-    img {
-      max-width: 100%;
-      height: auto;
+
+    @media screen and (orientation: portrait) {
+      body::before {
+        content: "Please rotate your device.";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        background-color: black;
+        color: white;
+        font-size: 2rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9999;
+      }
+
+      #game {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Criminal Codex Game</h1>
-
-  <img src="masked.png" alt="Masked Figure" />
-
-  <audio autoplay loop>
-    <source src="bgm.mp3" type="audio/mpeg" />
-  </audio>
+  <div id="game">
+    <h1>Loading Criminal Codex...</h1>
+  </div>
 
   <script src="service-worker.js"></script>
+  <script src="game.js"></script>
 </body>
 </html>
