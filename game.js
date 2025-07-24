@@ -1,4 +1,4 @@
-
+document.getElementById("game").innerHTML = "✅ game.js is working!";
 document.addEventListener("DOMContentLoaded", () => {
   const gameContainer = document.getElementById("game");
   gameContainer.style.display = "block";
