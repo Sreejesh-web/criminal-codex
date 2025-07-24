@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ DOMContentLoaded fired");
+
+  const gameContainer = document.getElementById("game");
+  gameContainer.style.display = "block";
 document.getElementById("game").innerHTML = "✅ game.js is working!";
 document.addEventListener("DOMContentLoaded", () => {
   const gameContainer = document.getElementById("game");
@@ -22,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function scene1() {
-    gameContainer.style.backgroundImage = "url('masked.png')";
+    gameContainer.style.backgroundColor = "red";
     playSound("footsteps.mp3");
     showMessage("You hear footsteps in the dark alley...", scene2);
   }
@@ -44,4 +49,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   scene1();
+console.log("✅ scene1() called");
 });
