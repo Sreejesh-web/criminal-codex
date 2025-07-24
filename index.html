@@ -52,5 +52,16 @@
 
   <script src="service-worker.js"></script>
 <script src="game.js"></script>
+<script>
+  window.onerror = function(message, source, lineno, colno, error) {
+    const game = document.getElementById("game");
+    game.innerHTML = `
+      <h2 style="color:red;">⚠️ JavaScript Error</h2>
+      <p>${message}</p>
+      <p>${source} [${lineno}:${colno}]</p>
+    `;
+    return true;
+  };
+</script>
 </body>
 </html>
