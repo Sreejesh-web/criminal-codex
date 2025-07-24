@@ -20,12 +20,25 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function showMessage(text, callback) {
-    gameContainer.innerHTML = `
-      <div style="color: white; padding: 20px; font-size: 1.5em;">${text}</div>
-      <button style="padding: 10px 20px; font-size: 1em; margin-top: 20px;">Next</button>
-    `;
-    document.querySelector("button").onclick = callback;
-  }
+  gameContainer.innerHTML = `
+    <div style="color: white; padding: 20px; font-size: 1.5em;">${text}</div>
+    <button style="padding: 10px 20px; font-size: 1em; margin-top: 20px;">Next</button>
+  `;
+
+  document.querySelector("button").onclick = () => {
+    // ✅ Start BGM after the first click
+    if (!window.bgmStarted) {
+      const bgm = new Audio("bgm.mp3");
+      bgm.loop = true;
+      bgm.volume = 0.5;
+      bgm.play().catch(err => console.warn("🔇 BGM play blocked:", err));
+      window.bgmStarted = true;
+    }
+
+    // Continue the story
+    callback();
+  };
+}
 
   function scene1() {
     gameContainer.style.backgroundColor = "black";
