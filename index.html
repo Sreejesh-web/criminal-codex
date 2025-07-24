@@ -54,13 +54,8 @@
 <script src="game.js"></script>
 <script>
   window.onerror = function(message, source, lineno, colno, error) {
-    const game = document.getElementById("game");
-    game.innerHTML = `
-      <h2 style="color:red;">⚠️ JavaScript Error</h2>
-      <p>${message}</p>
-      <p>${source} [${lineno}:${colno}]</p>
-    `;
-    return true;
+    document.getElementById("game").innerHTML = 
+      "❌ JavaScript Error:<br>" + message + "<br>In file: " + source;
   };
 </script>
 </body>
