@@ -5,11 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
   gameContainer.style.display = "block";
   gameContainer.innerHTML = "✅ game.js is working!";
 
+  
+if (!window.bgmStarted) {
   const bgm = new Audio("bgm.mp3");
   bgm.loop = true;
   bgm.volume = 0.5;
   bgm.play().catch(err => console.warn("🔇 BGM play blocked:", err));
-
+  window.bgmStarted = true;
+}
   function playSound(src) {
     if (typeof src !== "string" || !src.endsWith(".mp3")) {
       console.error("Invalid sound source:", src);
